@@ -2,6 +2,9 @@ package kr.co.programmers;
 
 import java.util.Arrays;
 
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/42840
+ */
 public class P42840 {
     public int[] solution(int[] answers) {
         int[][] persons = new int[][]{
