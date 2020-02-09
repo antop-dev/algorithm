@@ -63,23 +63,13 @@ public class P17679Test {
     @Test
     public void 예제6() {
         assertEquals(7, p.solution(3, 3, new String[]{
-                "AAB",
-                "AAA",
-                "BAA"
-        }));
-    }
-
-    @Test
-    public void 예제7() {
-        assertEquals(7, p.solution(3, 3, new String[]{
                 "BAA",
                 "AAA",
                 "AAB"
         }));
     }
-
     @Test
-    public void 예제8() {
+    public void 예제7() {
         assertEquals(6, p.solution(3, 4, new String[]{
                 "ZXYD",
                 "AAAC",
@@ -88,11 +78,24 @@ public class P17679Test {
     }
 
     @Test
-    public void 예제9() {
+    public void 예제8() {
         assertEquals(6, p.solution(3, 4, new String[]{
                 "AAZD",
                 "AAFC",
                 "AAGC"
+        }));
+    }
+
+    @Test
+    public void 예제9() {
+        assertEquals(14, p.solution(7, 3, new String[]{
+                "ZXC",
+                "XXC",
+                "BBX",
+                "BBB",
+                "XBB",
+                "AXX",
+                "FAA"
         }));
     }
 
