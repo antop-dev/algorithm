@@ -30,7 +30,7 @@ class P475 {
                 else -> return m
             }
         }
-        return -1;
+        return -1
     }
 
 }
