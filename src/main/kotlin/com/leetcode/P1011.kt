@@ -4,18 +4,30 @@ package com.leetcode
 class P1011 {
     fun shipWithinDays(weights: IntArray, D: Int): Int {
         println("weights = ${weights.contentToString()}, D = $D")
-        var capacity = weights.max() ?: 1
-        while (!possible(weights, capacity, D)) {
-            capacity++
+
+        var s = weights.max()!!
+        var e = weights.sum()
+        println("capacity range = $s ~ $e")
+
+        while (s < e) { // s와 e가 같아질 때까지 구한다.
+            val capacity = (s + e) / 2
+            if (D < calculate(weights, capacity)) {
+                s = capacity + 1
+            } else {
+                e = capacity
+            }
         }
-        return capacity
+
+        println()
+        println("s = $s, e = $e")
+        return s
     }
 
-    private fun possible(weights: IntArray, capacity: Int, D: Int): Boolean {
+    private fun calculate(weights: IntArray, capacity: Int): Int {
         println()
-        println("capacity = ${capacity}")
+        println("capacity = $capacity")
         var day = 1
-        var sum = 0;
+        var sum = 0
         for (i in weights) {
             if (sum + i > capacity) {
                 println(" -> D$day")
@@ -26,7 +38,7 @@ class P1011 {
             print(" $i")
         }
         println(" -> D$day")
-        return day <= D
+        return day
     }
 
 }

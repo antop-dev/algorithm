@@ -19,6 +19,12 @@ internal class P1011Test {
 
     @Test
     fun `example 3`() {
-        assertEquals(3, p.shipWithinDays(intArrayOf(1,2,3,1,1), 4))
+        assertEquals(3, p.shipWithinDays(intArrayOf(1, 2, 3, 1, 1), 4))
     }
+
+    @Test
+    fun `example 4`() {
+        assertEquals(160, p.shipWithinDays(intArrayOf(10, 50, 100, 100, 50, 100, 100, 100), 5))
+    }
+
 }
