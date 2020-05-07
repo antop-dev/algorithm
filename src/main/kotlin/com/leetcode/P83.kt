@@ -13,19 +13,18 @@ package com.leetcode
 class P83 {
     fun deleteDuplicates(head: ListNode?): ListNode? {
         if (head == null) return null
-        val root = ListNode(head.`val`)
-
-        var previous = root
-        var next = head.next
-        while (next != null) {
-            if (previous.`val` != next.`val`) {
-                val node = ListNode(next.`val`)
-                previous.next = node
-                previous = node
+        var prev: ListNode = head
+        var node: ListNode = head
+        while (node.next != null) {
+            val next = node.next!!
+            prev.next = null
+            if (prev.`val` != next.`val`) {
+                prev.next = next
+                prev = next
             }
-            next = next.next
+            node = next
         }
-        return root
+        return head
     }
 
     class ListNode(var `val`: Int) {
