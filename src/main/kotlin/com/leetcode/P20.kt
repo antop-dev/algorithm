@@ -12,7 +12,7 @@ class P20 {
                 ')' -> if (stack.pop() != '(') return false
                 ']' -> if (stack.pop() != '[') return false
                 '}' -> if (stack.pop() != '{') return false
-                else -> return false;
+                else -> return false
             }
         }
         return stack.isEmpty()
