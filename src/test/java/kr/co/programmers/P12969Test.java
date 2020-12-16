@@ -1,9 +1,10 @@
 package kr.co.programmers;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/12969
@@ -20,7 +21,7 @@ public class P12969Test {
 
         P12969.main(new String[]{});
 
-        Assert.assertEquals(
+        assertEquals(
                 "*****" + System.lineSeparator() +
                         "*****" + System.lineSeparator() +
                         "*****" + System.lineSeparator(),

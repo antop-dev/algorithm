@@ -1,8 +1,8 @@
 package kr.co.programmers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class P17679Test {
     private final P17679 p = new P17679();

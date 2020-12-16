@@ -1,9 +1,9 @@
 package kr.co.programmers;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/12901
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class P12901Test {
     private P12901 p;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         p = new P12901();
     }

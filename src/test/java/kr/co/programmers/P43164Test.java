@@ -1,8 +1,8 @@
 package kr.co.programmers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class P43164Test {
     private P43164 p = new P43164();

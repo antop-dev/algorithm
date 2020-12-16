@@ -1,7 +1,5 @@
 package kr.co.programmers;
 
-import java.util.Arrays;
-
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/42889
  */

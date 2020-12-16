@@ -1,12 +1,12 @@
 package kr.co.programmers;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class P42883Test {
     private P42883 solution;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         solution = new P42883();
     }

@@ -1,14 +1,14 @@
 package kr.co.programmers;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class P42840Test {
     private P42840 p;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         p = new P42840();
     }
