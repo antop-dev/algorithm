@@ -10,7 +10,7 @@ class P451Test {
 
     @Test
     fun `example 01`() {
-        assertThat(p.frequencySort("tree"), `is`("eert"))
+        assertThat(p.frequencySort("tree"), isIn(arrayOf("eert", "eetr")))
     }
 
     @Test
