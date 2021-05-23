@@ -1,21 +1,20 @@
 package com.leetcode
 
-import java.util.*
-
 // https://leetcode.com/problems/daily-temperatures/
 class P739 {
     fun dailyTemperatures(temperatures: IntArray): IntArray {
-        val answer = IntArray(temperatures.size)
-        val stack = Stack<Int>().apply { push(temperatures.lastIndex) }
-        for (i in temperatures.lastIndex - 1 downTo 0) {
-            var days = 0
-            while (stack.isNotEmpty() && temperatures[i] >= temperatures[stack.peek()]) {
-                val idx = stack.pop()
-                days += answer[idx]
+        val size = temperatures.size
+        val tmp = IntArray(size)
+        val answer = IntArray(size)
+        for (i in 1 until size) {
+            if (temperatures[i - 1] < temperatures[i]) {
+                for (j in i - 1 downTo 0) {
+                    if (tmp[j] > -1 && temperatures[j] < temperatures[i]) {
+                        tmp[j] = -1
+                        answer[j] = i - j
+                    }
+                }
             }
-            days = if (stack.isEmpty()) 0 else days + 1
-            stack.push(i)
-            answer[i] = days
         }
         return answer
     }
