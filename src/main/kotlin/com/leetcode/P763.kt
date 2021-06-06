@@ -7,11 +7,11 @@ class P763 {
         for (i in s.indices) last[s[i] - 'a'] = i
 
         val answer = mutableListOf<Int>()
-        var j = 0
+        var max = 0
         var anchor = 0
         for (i in s.indices) {
-            j = maxOf(j, last[s[i] - 'a'])
-            if (i == j) {
+            max = maxOf(max, last[s[i] - 'a'])
+            if (i == max) {
                 answer += i - anchor + 1
                 anchor = i + 1
             }
