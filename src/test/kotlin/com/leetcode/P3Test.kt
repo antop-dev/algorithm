@@ -1,4 +1,5 @@
-import com.leetcode.P3
+package com.leetcode
+
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
