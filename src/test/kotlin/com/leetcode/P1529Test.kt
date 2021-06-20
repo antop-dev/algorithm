@@ -4,7 +4,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-internal class P1529Test {
+class P1529Test {
     val p = P1529()
 
     @Test
