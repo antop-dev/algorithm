@@ -1,34 +1,25 @@
 package com.leetcode
 
-import java.util.*
-
 // https://github.com/antop-dev/algorithm/issues/282
 class P1472(homepage: String) {
-    private val stack1 = Stack<String>()
-    private var current = homepage
-    private val stack2 = Stack<String>()
+    private val list = mutableListOf(homepage)
+    private var p = 0
 
     fun visit(url: String) {
-        stack1.push(current)
-        current = url
+        repeat(list.lastIndex - p) {
+            list.removeAt(list.lastIndex)
+        }
+        list += url
+        p++
     }
 
     fun back(steps: Int): String {
-        repeat(steps) {
-            if (stack1.isEmpty()) return@repeat
-            stack2.push(current)
-            current = stack1.pop()
-        }
-        return current
+        p = maxOf(0, p - steps)
+        return list[p]
     }
 
     fun forward(steps: Int): String {
-        if (stack2.size < steps) return current
-        repeat(steps) {
-            stack1.push(current)
-            current = stack2.pop()
-        }
-        return current
+        p = minOf(p + steps, list.lastIndex)
+        return list[p]
     }
-
 }
