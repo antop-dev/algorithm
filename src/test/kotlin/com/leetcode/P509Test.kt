@@ -5,7 +5,7 @@ import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
 // // https://leetcode.com/problems/fibonacci-number/
-internal class P509Test {
+class P509Test {
     val p = P509()
 
     @Test
@@ -22,4 +22,10 @@ internal class P509Test {
     fun `example 03`() {
         assertThat(p.fib(4), `is`(3))
     }
+
+    @Test
+    fun `example 04`() {
+        assertThat(p.fib(30), `is`(832040))
+    }
+
 }
