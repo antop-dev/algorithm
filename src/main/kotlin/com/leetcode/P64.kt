@@ -1,19 +1,18 @@
 package com.leetcode
 
-// https://leetcode.com/problems/minimum-path-sum/description/
+// https://github.com/antop-dev/algorithm/issues/99
 class P64 {
     fun minPathSum(grid: Array<IntArray>): Int {
-        val m = grid.size
-        val n = grid[0].size
-
-        for (i in 1 until n) grid[0][i] += grid[0][i - 1]
-        for (i in 1 until m) grid[i][0] += grid[i - 1][0]
-        for (i in 1 until m) {
-            for (j in 1 until n) {
-                grid[i][j] += minOf(grid[i - 1][j], grid[i][j - 1])
+        for (i in grid.indices) {
+            for (j in grid[i].indices) {
+                grid[i][j] += when {
+                    (i <= 0 && j <= 0) -> 0
+                    (i <= 0) -> grid[i][j - 1]
+                    (j <= 0) -> grid[i - 1][j]
+                    else -> minOf(grid[i - 1][j], grid[i][j - 1])
+                }
             }
         }
-
-        return grid[m - 1][n - 1]
+        return grid.last().last()
     }
 }
