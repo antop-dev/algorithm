@@ -1,21 +1,18 @@
 package com.leetcode
 
-// https://leetcode.com/problems/majority-element/
+// https://github.com/antop-dev/algorithm/issues/145
 class P169 {
     fun majorityElement(nums: IntArray): Int {
-        var majority = nums[0]
-        var count = 1
-        for (i in 1 until nums.size) {
-            if (majority == nums[i]) {
-                count++
-            } else {
-                count--
-                if (count == 0) {
-                    majority = nums[i]
-                    count = 1
-                }
+        var count = 0
+        var candidate = 0
+
+        for (num in nums) {
+            if (count == 0) {
+                candidate = num
             }
+            count += if (num == candidate) 1 else -1
         }
-        return majority
+
+        return candidate
     }
 }
