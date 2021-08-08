@@ -1,22 +1,17 @@
 package com.leetcode
 
-/**
- * https://leetcode.com/problems/two-sum/
- */
+// https://github.com/antop-dev/algorithm/issues/32
 class P1 {
     fun twoSum(nums: IntArray, target: Int): IntArray {
-        println("Given nums = ${nums.contentToString()}, target = $target")
-
+        val map = mutableMapOf<Int, Int>()
         for (i in nums.indices) {
-            for (j in i + 1 until nums.size) {
-                val sum = nums[i] + nums[j]
-                if (sum == target) {
-                    println("Because nums[$i] + nums[$j] = ${nums[i]} + ${nums[j]} = $sum")
-                    return intArrayOf(i, j)
-                }
+            val v = target - nums[i]
+            if (map.containsKey(v)) {
+                return intArrayOf(i, map[v]!!)
             }
+            map[nums[i]] = i
         }
 
-        return intArrayOf(0, 0)
+        return intArrayOf()
     }
 }
