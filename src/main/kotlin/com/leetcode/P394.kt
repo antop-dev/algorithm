@@ -5,28 +5,27 @@ import java.util.*
 // https://github.com/antop-dev/algorithm/issues/294
 class P394 {
     fun decodeString(s: String): String {
-        val stack = Stack<String>()
-        var n = 0
-        for (c in s) {
-            when (c) {
-                in '0'..'9' -> n = (10 * n) + (c - '0')
+        val queue: Deque<Char> = ArrayDeque()
+        for (c in s.toCharArray()) queue.add(c)
+        return recursion(queue)
+    }
+
+    private fun recursion(queue: Queue<Char>): String {
+        val ans = StringBuilder()
+        var num = 0
+        loop@ while (queue.isNotEmpty()) {
+            when (val c = queue.poll()) {
+                in '0'..'9' -> num = (num * 10) + (c - '0')
                 '[' -> {
-                    stack.push(n.toString())
-                    stack.push("$c")
-                    n = 0
+                    val temp = recursion(queue)
+                    repeat(num) { ans.append(temp) }
+                    num = 0
                 }
-                ']' -> {
-                    // "["가 나오기 전까지 문자열 추출
-                    val sb = StringBuffer()
-                    var w: String?
-                    while (stack.pop().also { w = it } != "[") {
-                        sb.insert(0, w)
-                    }
-                    stack.push(sb.repeat(stack.pop().toInt()))
-                }
-                else -> stack.push("$c")
+                ']' -> break@loop
+                else -> ans.append(c)
             }
         }
-        return stack.joinToString("")
+        return ans.toString()
     }
+
 }
