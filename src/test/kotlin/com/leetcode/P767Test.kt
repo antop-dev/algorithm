@@ -28,4 +28,22 @@ class P767Test {
         assertThat(p.reorganizeString("baaba"), `is`("ababa"))
     }
 
+    @Test
+    fun `example 05`() {
+        assertThat(
+            p.reorganizeString("ogccckcwmbmxtsbmozli"),
+            anyOf(
+                `is`("cocgcickmlmsmtbwbxoz"),
+                `is`("cbcgckcwmxmtmsozolbi"),
+                `is`("cbcwcgclmxmkmsozbiot"),
+                `is`("cbcsctcxlizgomomwmbk")
+            )
+        )
+    }
+
+    @Test
+    fun `example 06`() {
+        assertThat(p.reorganizeString("abbabbaaab"), `is`("ababababab"))
+    }
+
 }
