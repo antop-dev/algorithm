@@ -1,7 +1,5 @@
 package com.leetcode
 
-import java.util.*
-
 // https://github.com/antop-dev/algorithm/issues/329
 class P767 {
     fun reorganizeString(s: String): String {
