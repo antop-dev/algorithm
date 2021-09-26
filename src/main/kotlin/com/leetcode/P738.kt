@@ -3,30 +3,22 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/330
 class P738 {
     fun monotoneIncreasingDigits(n: Int): Int {
-        // number → array
-        val arr = IntArray(10).apply {
-            var i = lastIndex
-            var num = n
-            while (num > 0) {
-                this[i--] = num % 10
-                num /= 10
+        var answer = 0 // 답
+        var num = n // 주어진 수
+        var m = 1 // 자리수를 완성하기 위해 10씩 곱한다
+        var prev = 9 // 이전 값
+        while (num > 0) {
+            var v = num % 10
+            if (v > prev) {
+                v--
+                answer = (1 * m) - 1
             }
-        }
-        // greedy
-        for (i in arr.lastIndex - 1 downTo 0) {
-            if (arr[i] > arr[i + 1]) {
-                for (j in i + 1 until arr.size) {
-                    arr[j] = 9
-                }
-                arr[i]--
-            }
-        }
-        // array → number
-        var answer = 0
-        var m = 1
-        for (i in arr.lastIndex downTo 0) {
-            answer += arr[i] * m
+
+            answer += v * m
+
+            num /= 10
             m *= 10
+            prev = v
         }
         return answer
     }
