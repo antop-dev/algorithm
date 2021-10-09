@@ -3,15 +3,6 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/335
 class P5 {
     fun longestPalindrome(s: String): String {
-
-        print("  j")
-        for (i in s.indices) print("  $i")
-        println()
-
-        print("i  ")
-        for (c in s) print("  $c")
-        println()
-
         val n = s.length
         var startIndex = 0
         var endIndex = 0
@@ -42,13 +33,6 @@ class P5 {
                 j++
             }
         }
-
-        for (i in dp.indices) {
-            println("$i ${s[i]} ${dp[i].contentToString()}")
-        }
-
-
-
         // substring
         val sb = StringBuilder()
         for (i in startIndex..endIndex) sb.append(s[i])
