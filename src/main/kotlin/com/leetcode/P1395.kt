@@ -10,7 +10,7 @@ class P1395 {
         val lesser = IntArray(n)
 
         for (i in rating.indices) {
-            for (j in i downTo 0) {
+            for (j in i - 1 downTo 0) {
                 if (rating[i] > rating[j]) {
                     greater[i]++
                     answer += greater[j]
