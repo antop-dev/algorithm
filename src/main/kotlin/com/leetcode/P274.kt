@@ -1,7 +1,7 @@
 package com.leetcode
 
 // https://github.com/antop-dev/algorithm/issues/344
-class P247 {
+class P274 {
     fun hIndex(citations: IntArray): Int {
         citations.sortDescending()
         for (i in citations.indices) {
