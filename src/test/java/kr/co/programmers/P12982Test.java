@@ -11,12 +11,12 @@ public class P12982Test {
     private P12982 p = new P12982();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals(3, p.solution(new int[]{1, 3, 2, 5, 4}, 9));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals(4, p.solution(new int[]{2, 2, 3, 3}, 10));
     }
 }

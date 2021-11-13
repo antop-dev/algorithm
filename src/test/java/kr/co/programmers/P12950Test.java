@@ -11,7 +11,7 @@ public class P12950Test {
     private P12950 p = new P12950();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertArrayEquals(
                 new int[][]{{4, 6}, {7, 9}},
                 p.solution(
@@ -22,7 +22,7 @@ public class P12950Test {
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertArrayEquals(
                 new int[][]{{4}, {6}},
                 p.solution(

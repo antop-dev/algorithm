@@ -14,17 +14,17 @@ public class P12910Test {
     }
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertArrayEquals(new int[]{5, 10}, p.solution(new int[]{5, 9, 7, 10}, 5));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertArrayEquals(new int[]{1, 2, 3, 36}, p.solution(new int[]{2, 36, 1, 3}, 1));
     }
 
     @Test
-    public void 입출력예3() {
+    public void example03() {
         assertArrayEquals(new int[]{-1}, p.solution(new int[]{3, 2, 6}, 10));
     }
 }

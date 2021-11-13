@@ -11,14 +11,14 @@ public class P42578Test {
     private final P42578 p = new P42578();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals(5, p.solution(new String[][]
                 {{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}}
         ));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals(3, p.solution(new String[][]
                 {{"crow_mask", "face"}, {"blue_sunglasses", "face"}, {"smoky_makeup", "face"}}
         ));

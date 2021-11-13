@@ -11,12 +11,12 @@ public class P12937Test {
     private P12937 p = new P12937();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals("Odd", p.solution(3));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals("Even", p.solution(4));
     }
 

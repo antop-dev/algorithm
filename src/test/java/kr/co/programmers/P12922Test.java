@@ -11,12 +11,12 @@ public class P12922Test {
     private P12922 p = new P12922();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals("수박수", p.solution(3));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals("수박수박", p.solution(4));
     }
 

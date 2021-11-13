@@ -14,12 +14,12 @@ public class P42840Test {
     }
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertArrayEquals(new int[]{1}, p.solution(new int[]{1, 2, 3, 4, 5}));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertArrayEquals(new int[]{1}, p.solution(new int[]{1, 2, 3, 4, 5}));
     }
 }

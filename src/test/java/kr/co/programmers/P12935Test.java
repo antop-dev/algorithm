@@ -11,12 +11,12 @@ public class P12935Test {
     private P12935 p = new P12935();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertArrayEquals(new int[]{4, 3, 2}, p.solution(new int[]{4, 3, 2, 1}));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertArrayEquals(new int[]{-1}, p.solution(new int[]{10}));
     }
 

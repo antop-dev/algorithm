@@ -11,22 +11,22 @@ public class P12934Test {
     private P12934 p = new P12934();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals(144, p.solution(121));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals(-1, p.solution(3));
     }
 
     @Test
-    public void 입출력예3() {
+    public void example03() {
         assertEquals(4, p.solution(1));
     }
 
     @Test
-    public void 입출력예4() {
+    public void example04() {
         assertEquals(-1, p.solution(50_000_000_000_000L));
     }
 

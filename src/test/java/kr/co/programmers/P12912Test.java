@@ -17,17 +17,17 @@ public class P12912Test {
     }
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals(12, p.solution(3, 5));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals(3, p.solution(3, 3));
     }
 
     @Test
-    public void 입출력예3() {
+    public void example03() {
         assertEquals(12, p.solution(5, 3));
     }
 }

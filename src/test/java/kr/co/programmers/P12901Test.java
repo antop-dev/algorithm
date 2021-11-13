@@ -17,17 +17,17 @@ public class P12901Test {
     }
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals("TUE", p.solution(5, 24));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals("SUN", p.solution(2, 28));
     }
 
     @Test
-    public void 입출력예3() {
+    public void example03() {
         assertEquals("MON", p.solution(2, 29));
     }
 }

@@ -11,17 +11,17 @@ public class P12926Test {
     private P12926 p = new P12926();
 
     @Test
-    public void 입출력예1() {
+    public void example01() {
         assertEquals("BC", p.solution("AB", 1));
     }
 
     @Test
-    public void 입출력예2() {
+    public void example02() {
         assertEquals("a", p.solution("z", 1));
     }
 
     @Test
-    public void 입출력예3() {
+    public void example03() {
         assertEquals("e F d", p.solution("a B z", 4));
     }
 
