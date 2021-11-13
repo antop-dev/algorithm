@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/42890
@@ -12,19 +11,13 @@ import java.util.stream.IntStream;
 public class P42890 {
 
     public int solution(final String[][] relation) {
-        print(relation);
-
         final List<String> superKeys = new ArrayList<>();
 
-        System.out.println();
         for (int i = 0; i < relation[0].length; i++) {
             recurrence(superKeys, relation, "" + i);
         }
 
-        System.out.println();
-        System.out.println("Super Keys = " + superKeys);
         superKeys.removeIf(key -> !isCandidateKey(superKeys, key));
-        System.out.println("Candidate Key = " + superKeys);
 
         return superKeys.size();
     }
@@ -37,7 +30,6 @@ public class P42890 {
      * @param columns   컬럼의 인덱스들
      */
     private void recurrence(final List<String> superKeys, final String[][] relation, String columns) {
-        System.out.println("columns = " + columns);
         if (isSuperKey(relation, columns)) {
             superKeys.add(columns);
             // 현재 컬럼이 슈퍼키에 만족하면 이 이후의 슈퍼키들은 최소성을 만족하지 않게 된다.
@@ -100,31 +92,4 @@ public class P42890 {
         return true;
     }
 
-    /**
-     * 예쁘게 출력
-     *
-     * @param relation 데이터
-     */
-    private void print(String[][] relation) {
-        StringBuilder format = new StringBuilder("|");
-        for (int i = 0; i < relation[0].length; i++) {
-            format.append(" %-8s |");
-        }
-        format.append(System.lineSeparator());
-
-        System.out.format(format.toString(), IntStream.range(0, relation[0].length).mapToObj(String::valueOf).toArray());
-
-        for (int i = 0; i < relation[0].length; i++) {
-            if (i == 0) System.out.print("|");
-            System.out.print(" -------- |");
-        }
-        System.out.println();
-
-        for (String[] tuple : relation) {
-            System.out.format(format.toString(), tuple);
-        }
-    }
-
 }
-
-
