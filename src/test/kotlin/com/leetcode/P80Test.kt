@@ -32,4 +32,20 @@ class P80Test {
         assertThat(nums[6], `is`(3))
     }
 
+    @Test
+    fun `example 03`() {
+        val nums = intArrayOf(0, 0, 1, 1, 2, 2, 3, 3, 4, 4)
+        assertThat(p.removeDuplicates(nums), `is`(10))
+        assertThat(nums[0], `is`(0))
+        assertThat(nums[1], `is`(0))
+        assertThat(nums[2], `is`(1))
+        assertThat(nums[3], `is`(1))
+        assertThat(nums[4], `is`(2))
+        assertThat(nums[5], `is`(2))
+        assertThat(nums[6], `is`(3))
+        assertThat(nums[7], `is`(3))
+        assertThat(nums[8], `is`(4))
+        assertThat(nums[9], `is`(4))
+    }
+
 }
