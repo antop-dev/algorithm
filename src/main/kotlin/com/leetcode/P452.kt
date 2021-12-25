@@ -3,17 +3,16 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/360
 class P452 {
     fun findMinArrowShots(points: Array<IntArray>): Int {
-        points.sortBy { it[0] }
+        points.sortBy { it[1] }
 
         var answer = 1
-        var standard = points[0][1]
+        var arrow = points[0][1]
 
-        for (p in points) {
-            standard = if (standard >= p[0]) {
-                minOf(p[1], standard)
-            } else {
+        for (i in 1 until points.size) {
+            val p = points[i]
+            if (p[0] > arrow) {
+                arrow = p[1]
                 answer++
-                p[1]
             }
         }
         return answer

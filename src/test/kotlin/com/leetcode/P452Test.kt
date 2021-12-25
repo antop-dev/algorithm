@@ -100,4 +100,15 @@ class P452Test {
             ), `is`(2)
         )
     }
+
+    @Test
+    fun `example 07`() {
+        assertThat(
+            p.findMinArrowShots(
+                arrayOf(
+                    intArrayOf(-2147483648, 2147483647)
+                )
+            ), `is`(1)
+        )
+    }
 }
