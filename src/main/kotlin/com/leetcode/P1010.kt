@@ -8,26 +8,12 @@ class P1010 {
         for (t in time) counter[t % 60]++
 
         var answer = 0
-        answer += nCr(counter[0])
-        answer += nCr(counter[30])
-        for (i in 1 until counter.size / 2) {
+        answer += counter[0] * (counter[0] - 1) / 2
+        answer += counter[30] * (counter[30] - 1) / 2
+        for (i in 1..29) {
             answer += counter[i] * counter[60 - i]
         }
         return answer
-    }
-
-    // n개 중 r개를 고르는 경우 조합의 수 구하기
-    private fun nCr(n: Int, r: Int = 2): Int {
-        var pick = r // 이놈의 코틀린 final...
-
-        if (pick > n) return 0
-        if (pick == 0) return 1
-        if (n == pick) return 1
-        if (n - pick < pick) pick = n - pick
-
-        var res = 1
-        for (i in 1..pick) res = res * (n - i + 1) / i
-        return res
     }
 
 }
