@@ -10,7 +10,6 @@ class P1679 {
         var j = nums.lastIndex
         while (i < j) {
             val sum = nums[i] + nums[j]
-            println("i = $i, j = $j, sum = ${nums[i]} + ${nums[j]} = $sum")
             if (sum == k) {
                 answer++
                 i++
