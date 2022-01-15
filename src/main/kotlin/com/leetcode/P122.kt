@@ -5,9 +5,8 @@ class P122 {
     fun maxProfit(prices: IntArray): Int {
         var sum = 0
         for (i in 1 until prices.size) {
-            with(prices[i] - prices[i - 1]) {
-                if (this > 0) sum += this
-            }
+            val diff = prices[i] - prices[i - 1]
+            if(diff > 0) sum += diff
         }
         return sum
     }
