@@ -15,9 +15,6 @@ class P983 {
             dp[i] = minOf(dp[i + 1] + costs[0], dp[i + 7] + costs[1])
             dp[i] = minOf(dp[i], dp[i + 30] + costs[2])
         }
-
-        println(dp.contentToString())
-
         return dp[1]
     }
 
