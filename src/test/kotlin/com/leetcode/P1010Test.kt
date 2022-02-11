@@ -1,11 +1,11 @@
 package com.leetcode
 
-import FileBase
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
+import utils.FileUtils
 
-class P1010Test : FileBase() {
+class P1010Test {
     val p = P1010()
 
     @Test
@@ -20,7 +20,7 @@ class P1010Test : FileBase() {
 
     @Test
     fun `example 03`() {
-        val array = readFile("src/test/resources/com/leetcode/p1010-03.txt", IntArray::class.java)
+        val array = FileUtils.readFile("src/test/resources/com/leetcode/p1010-03.txt", IntArray::class.java)
         assertThat(p.numPairsDivisibleBy60(array), `is`(12297853))
     }
 
