@@ -22,4 +22,28 @@ class P12951Test {
         assertThat(p.solution("  adgagd 3eagdag "), `is`("  Adgagd 3eagdag "))
     }
 
+    @Test
+    fun `example 04`() {
+        assertThat(p.solution("     "), `is`("     "))
+    }
+
+    @Test
+    fun `example 05`() {
+        assertThat(p.solution(" "), `is`(" "))
+    }
+
+    @Test
+    fun `example 06`() {
+        assertThat(p.solution("a"), `is`("A"))
+    }
+
+    @Test
+    fun `example 07`() {
+        assertThat(p.solution("A"), `is`("A"))
+    }
+
+    @Test
+    fun `example 08`() {
+        assertThat(p.solution("3"), `is`("3"))
+    }
 }
