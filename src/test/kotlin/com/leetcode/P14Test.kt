@@ -3,10 +3,7 @@ package com.leetcode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-/**
- * https://leetcode.com/problems/longest-common-prefix/
- */
-internal class P14Test {
+class P14Test {
     val p = P14()
 
     @Test

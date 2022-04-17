@@ -1,36 +1,25 @@
 package com.leetcode
 
-/**
- * https://leetcode.com/problems/longest-common-prefix/
- */
+// https://github.com/antop-dev/algorithm/issues/37
 class P14 {
     fun longestCommonPrefix(strings: Array<String>): String {
-        // 문자열들 중 ""이 포함되어 있으면 무조건 ""
-        if (strings.filter { it.isEmpty() }.any()) {
-            return "";
-        }
-
-        // 가장 긴 시작 문자열
-        var longestPrefix = ""
-        // 가장 긴 길이
-        var maxLen = 0
-        for (string in strings) {
-            var len = 0
-
-            check@ for (i in string.indices) {
-                for (word in strings) {
-                    if (word.length < string.length || word[i] != string[i]) {
-                        break@check
-                    }
-                }
-                len++
-            }
-
-            if (len > maxLen) {
-                longestPrefix = string.substring(0, len)
-                maxLen = len
+        // 가장 짧은 문자열 길이 구하기
+        var min = Int.MAX_VALUE
+        for (s in strings) {
+            if (s.length < min) {
+                min = s.length
             }
         }
-        return longestPrefix
+        // 글자 비교
+        val sb = StringBuffer()
+        loop@ for (i in 0 until min) {
+            val c = strings[0][i]
+            for (s in strings) {
+                if (c != s[i]) break@loop
+            }
+            sb.append(c)
+        }
+
+        return sb.toString()
     }
 }
