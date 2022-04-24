@@ -4,7 +4,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-internal class P242Test {
+class P242Test {
     val p = P242()
 
     @Test
@@ -15,5 +15,10 @@ internal class P242Test {
     @Test
     fun `example 02`() {
         assertThat(p.isAnagram("rat", "car"), `is`(false))
+    }
+
+    @Test
+    fun `example 03`() {
+        assertThat(p.isAnagram("ab", "a"), `is`(false))
     }
 }
