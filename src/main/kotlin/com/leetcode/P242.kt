@@ -1,11 +1,19 @@
 package com.leetcode
 
-// https://leetcode.com/problems/valid-anagram/
+// https://github.com/antop-dev/algorithm/issues/135
 class P242 {
     fun isAnagram(s: String, t: String): Boolean {
-        val hash = mutableMapOf<Char, Int>()
-        for (c in s) hash[c] = hash[c]?.plus(1) ?: 1
-        for (c in t) hash[c] = hash[c]?.minus(1) ?: -1
-        return !hash.any { it.value != 0 }
+        if (s.length != t.length) return false
+
+        val arr = IntArray(26)
+        for (i in s.indices) {
+            arr[s[i] - 'a']++
+            arr[t[i] - 'a']--
+        }
+
+        for (i in arr.indices) {
+            if (arr[i] != 0) return false
+        }
+        return true
     }
 }
