@@ -5,7 +5,7 @@ class P70 {
     fun climbStairs(n: Int): Int {
         if (n == 1) return 1
 
-        val dp = Array(n + 1) { 0 }.apply {
+        val dp = IntArray(n + 1) .apply {
             this[1] = 1
             this[2] = 2
         }
