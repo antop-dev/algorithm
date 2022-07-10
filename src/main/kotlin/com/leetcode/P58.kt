@@ -3,11 +3,11 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/57
 class P58 {
     fun lengthOfLastWord(s: String): Int {
-        var c = 0
-        for (i in s.lastIndex downTo 0) {
-            if (s[i] == ' ' && c > 0) break
-            else if (s[i] != ' ') c++
+        var length = 0
+        for (i in s.indices.reversed()) {
+            if (s[i] == ' ' && length > 0) break
+            if (s[i] != ' ') length++
         }
-        return c
+        return length
     }
 }
