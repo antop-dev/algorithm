@@ -1,6 +1,6 @@
 package com.leetcode
 
-// https://leetcode.com/problems/length-of-last-word/
+// https://github.com/antop-dev/algorithm/issues/57
 class P58 {
     fun lengthOfLastWord(s: String): Int {
         var c = 0
