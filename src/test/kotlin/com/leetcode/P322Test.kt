@@ -27,4 +27,9 @@ class P322Test {
         assertThat(p.coinChange(intArrayOf(186, 419, 83, 408), 6249), `is`(20))
     }
 
+    @Test
+    fun `example 05`() {
+        assertThat(p.coinChange(intArrayOf(1), 100), `is`(100))
+    }
+
 }
