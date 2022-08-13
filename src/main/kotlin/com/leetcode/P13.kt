@@ -17,22 +17,18 @@ class P13 {
         var sum = 0
         var prev = ' '
 
-        for (i in s.length - 1 downTo 0) {
-            val c = s[i]
-
-            val n = map.getOrDefault(c, 0).run {
-                this * when {
-                    c == 'I' && (prev == 'V' || prev == 'X') -> -1
-                    c == 'X' && (prev == 'L' || prev == 'C') -> -1
-                    c == 'C' && (prev == 'D' || prev == 'M') -> -1
-                    else -> 1
-                }
+        // IV = + 5 - 1
+        // CM = + 1000 - 100
+        for (c in s.reversed()) {
+            var n = map[c]!!
+            n *= when {
+                c == 'I' && (prev == 'V' || prev == 'X') -> -1
+                c == 'X' && (prev == 'L' || prev == 'C') -> -1
+                c == 'C' && (prev == 'D' || prev == 'M') -> -1
+                else -> 1
             }
 
             sum += n
-            println("c = $c, prev = ${prev}," +
-                    " n = ${n.toString().padStart(5, ' ')}," +
-                    " sum = ${sum.toString().padStart(5, ' ')}")
             prev = c
         }
         return sum
