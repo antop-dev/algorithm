@@ -1,18 +1,13 @@
 package com.leetcode
 
-// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+// https://github.com/antop-dev/algorithm/issues/40
 class P26 {
     fun removeDuplicates(nums: IntArray): Int {
-        println("Given nums = ${nums.contentToString()}")
-        if (nums.isEmpty()) return 0
-        var i = 0
-        for (j in 1 until nums.size) {
-            if (nums[j] != nums[i]) {
-                i++
-                nums[i] = nums[j]
-            }
+        var anchor = 0
+        for (i in 1 until nums.size) {
+            if (nums[anchor] == nums[i]) continue
+            nums[++anchor] = nums[i]
         }
-        println("Result nums = ${nums.contentToString()}")
-        return i + 1
+        return anchor + 1
     }
 }

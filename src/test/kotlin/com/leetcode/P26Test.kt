@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
-internal class P26Test {
+class P26Test {
     val p = P26()
 
     @Test
