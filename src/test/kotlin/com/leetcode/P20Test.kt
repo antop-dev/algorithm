@@ -3,8 +3,7 @@ package com.leetcode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-// https://leetcode.com/problems/valid-parentheses/
-internal class P20Test {
+class P20Test {
     val p = P20()
 
     @Test
