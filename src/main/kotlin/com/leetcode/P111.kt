@@ -4,21 +4,22 @@ package com.leetcode
 class P111 {
     fun minDepth(root: TreeNode?): Int {
         if (root == null) return 0
-        val queue = mutableListOf<TreeNode>().apply { add(root) }
+
+        val queue = mutableListOf<TreeNode>()
+        queue += root
+
         var depth = 1
-        run loop@{
-            while (queue.isNotEmpty()) {
-                var size = queue.size
-                while (size > 0) {
-                    with(queue.removeAt(0)) {
-                        if (left == null && right == null) return@loop
-                        left?.run { queue.add(this) }
-                        right?.run { queue.add(this) }
-                    }
-                    size--
+        while (queue.isNotEmpty()) {
+            var size = queue.size
+            while (size-- > 0) {
+                val poll = queue.removeAt(0)
+                if (poll.left == null && poll.right == null) {
+                    return depth
                 }
-                depth++
+                poll.left?.run { queue += this }
+                poll.right?.run { queue += this }
             }
+            depth++
         }
         return depth
     }
