@@ -1,43 +1,38 @@
 package kr.co.programmers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+// https://github.com/antop-dev/algorithm/issues/429
 public class P131128 {
     public String solution(String X, String Y) {
-        List<Character> chars = new ArrayList<>();
-        char[] xs = X.toCharArray();
-        char[] ys = Y.toCharArray();
-        int j = Y.length() - 1;
-        // 정렬 후 뒤에서부터 탐색하여 자동으로 큰 짝꿍 수를 먼저 찾는다.
-        Arrays.sort(xs);
-        Arrays.sort(ys);
-        // 짝꿍 찾기
-        loop:
-        for (int i = xs.length - 1; i >= 0; i--) {
-            for (int k = j; k >= 0; k--) {
-                if (xs[i] == ys[k]) {
-                    chars.add(xs[i]);
-                    j = k - 1;
-                    continue loop;
+        // 출현 숫자를 인덱스화 한다.
+        int[] x = new int[10];
+        int[] y = new int[10];
+        // 카운팅
+        for (char c : X.toCharArray()) {
+            x[c - '0']++;
+        }
+        for (char c : Y.toCharArray()) {
+            y[c - '0']++;
+        }
+        // 숫자 만들기
+        int count = 0; // 일치하는 숫자 개수
+        StringBuilder sb = new StringBuilder();
+        for (int n = 9; n >= 0; n--) {
+            int min = Math.min(x[n], y[n]);
+            count += min;
+            // 9 ~ 1 숫자이거나
+            // (0일 경우) 앞에서 숫자가 하나라도 쓰인 경우
+            // 즉 0일 경우 앞에 숫자가 하나도 안 쓰였으면 넘어간다.
+            if (n >= 1 || (count - min) > 0) {
+                while (min-- > 0) { // 숫자 채우기
+                    sb.append(n);
                 }
             }
         }
-        // 짝꿍이 존재하지 않을 경우.
-        if (chars.isEmpty()) {
+
+        if (count == 0) {
             return "-1";
         }
-        // 숫자 만들기
-        StringBuilder sb = new StringBuilder();
-        for (char c : chars) {
-            if (sb.length() == 0 && c == '0') {
-                // '0'으로 시작하는 경우 제외
-                continue;
-            }
-            sb.append(c);
-        }
-        // 길이가 0이면 짝꿍이 전부 '0'
-        return sb.length() == 0 ? "0" : sb.toString();
+
+        return sb.length() > 0 ? sb.toString() : "0";
     }
 }
