@@ -1,24 +1,24 @@
 package com.leetcode;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 // https://github.com/antop-dev/algorithm/issues/438
 public class P2390 {
     public String removeStars(String s) {
-        Stack<Character> stack = new Stack<>();
+        List<Character> list = new ArrayList<>(s.length());
         for (char c : s.toCharArray()) {
             if (c == '*') {
-                stack.pop();
+                list.remove(list.size() - 1);
             } else {
-                stack.push(c);
+                list.add(c);
             }
-            System.out.println("'" + c + "' -> " + stack);
         }
-        // stack to string
-        char[] chars = new char[stack.size()];
-        for (int i = chars.length - 1; i >= 0; i--) {
-            chars[i] = stack.pop();
+        // list to string
+        StringBuilder sb = new StringBuilder();
+        for (char c : list) {
+            sb.append(c);
         }
-        return new String(chars);
+        return sb.toString();
     }
 }
