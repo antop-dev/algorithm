@@ -4,14 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * https://programmers.co.kr/learn/courses/30/lessons/42890
- */
-public class P42890Test {
+class P42890Test {
     private final P42890 p = new P42890();
 
     @Test
-    public void 예제1() {
+    void example01() {
         assertEquals(2, p.solution(new String[][]{
                 {"100", "ryan", "music", "2"},
                 {"200", "apeach", "math", "2"},
@@ -23,7 +20,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제2() {
+    void example02() {
         assertEquals(1, p.solution(new String[][]{
                 {"a", "b", "c"},
                 {"1", "b", "c"},
@@ -33,7 +30,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제3() {
+    void example03() {
         assertEquals(2, p.solution(new String[][]{
                 {"a", "1", "4"},
                 {"2", "1", "5"},
@@ -42,7 +39,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제4() {
+    void example04() {
         assertEquals(1, p.solution(new String[][]{
                 {"1"},
                 {"2"},
@@ -51,7 +48,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제5() {
+    void example05() {
         assertEquals(2, p.solution(new String[][]{
                 {"1", "a"},
                 {"2", "b"},
@@ -60,7 +57,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제6() {
+    void example06() {
         assertEquals(1, p.solution(new String[][]{
                 {"1", "a"},
                 {"1", "b"},
@@ -69,7 +66,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제7() {
+    void example07() {
         assertEquals(2, p.solution(new String[][]{
                 {"1", "a", "c"},
                 {"1", "b", "d"},
@@ -79,7 +76,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제8() {
+    void example08() {
         assertEquals(3, p.solution(new String[][]{
                 {"1", "928888", "john", "27"},
                 {"1", "929999", "leo", "19"},
@@ -89,7 +86,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제9() {
+    void example09() {
         assertEquals(2, p.solution(new String[][]{
                 {"1", "0", "o", "19"},
                 {"1", "0", "p", "19"},
@@ -99,7 +96,7 @@ public class P42890Test {
     }
 
     @Test
-    public void 예제10() {
+    void example10() {
         assertEquals(8, p.solution(new String[][]{
                 {"a", "b", "c", "d", "e", "f", "g", "h"},
                 {"i", "j", "k", "l", "m", "n", "o", "p"},
