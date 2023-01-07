@@ -1,15 +1,19 @@
 package com.leetcode
 
-// https://leetcode.com/problems/ransom-note/
+// https://github.com/antop-dev/algorithm/issues/216
 class P383 {
     fun canConstruct(ransomNote: String, magazine: String): Boolean {
-        val counter = mutableMapOf<Char, Int>()
-        for (c in magazine) {
-            counter[c] = counter[c]?.run { this + 1 } ?: 1
+        val alphabet = IntArray(26) { 0 }
+        for (ch in magazine) {
+            alphabet[ch - 'a']++
         }
-        for (c in ransomNote) {
-            counter[c] = counter[c]?.run { this - 1 } ?: -1
+        for (ch in ransomNote) {
+            val i = ch - 'a'
+            alphabet[i]--
+            if (alphabet[i] < 0) {
+                return false
+            }
         }
-        return !counter.any { it.value < 0 }
+        return true
     }
 }
