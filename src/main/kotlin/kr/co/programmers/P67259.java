@@ -28,20 +28,20 @@ public class P67259 {
      * @param y     현재 y 좌표
      * @param x     현재 x 좌표
      */
-    public void dfs(int[][] board, int from, int sum, int y, int x) {
+    private void dfs(int[][] board, int from, int sum, int y, int x) {
         int n = board.length;
         if (y < 0 || x < 0 || y >= n || x >= n || board[y][x] == 1) {
             return;
         }
-        // 이전 방향에 따라 sum 값이 달라지므로
-        // board[i][j] + 500 < sum 조건 사용하면 2차원 배열로 가능
-        // 가지치기?
-        if (board[y][x] + 500 < sum) {
+        // 새로운 방향으로부터 왔을 때 현재 최소 비용 보다 크다면 중지
+        if (board[y][x] < sum) {
             return;
         }
         // 적은 공사 비용으로 치환
-        if (sum < board[y][x]) {
-            board[y][x] = sum;
+        board[y][x] = sum;
+        // 도착지
+        if (y == n - 1 && x == n - 1) {
+            return;
         }
         // 네방향으로 이동
         for (int i = 0; i < directions.length; i++) {
@@ -54,7 +54,6 @@ public class P67259 {
                 dfs(board, i, sum + 600, y + to[0], x + to[1]);
             }
         }
-
     }
 
 }
