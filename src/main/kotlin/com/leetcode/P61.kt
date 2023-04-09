@@ -26,8 +26,8 @@ class P61 {
 
         return root
     }
-}
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
+    class ListNode(var `val`: Int) {
+        var next: ListNode? = null
+    }
 }

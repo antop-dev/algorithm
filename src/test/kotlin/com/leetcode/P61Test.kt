@@ -1,5 +1,6 @@
 package com.leetcode
 
+import com.leetcode.P61.ListNode
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.nullValue
