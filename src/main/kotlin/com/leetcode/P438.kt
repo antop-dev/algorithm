@@ -20,11 +20,10 @@ class P438 {
                 counter[s[left] - 'a']++
                 left++
             }
-            if (right - left + 1 == len) {
-                if (counter.all { it == 0 }) { // 아나그램 체크
-                    answer += left
-                }
+            if (right - left + 1 == len && counter.all { it == 0 }) { // 아나그램 체크
+                answer += left
             }
+
             right++
         }
 
