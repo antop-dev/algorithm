@@ -3,10 +3,7 @@ package com.leetcode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-/**
- * https://leetcode.com/problems/add-two-numbers/
- */
-internal class P2Test {
+class P2Test {
     val p = P2()
 
     @Test
