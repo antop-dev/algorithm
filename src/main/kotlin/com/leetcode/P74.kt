@@ -1,26 +1,25 @@
 package com.leetcode
 
-// https://leetcode.com/problems/search-a-2d-matrix/
+// https://github.com/antop-dev/algorithm/issues/47
 class P74 {
     fun searchMatrix(matrix: Array<IntArray>, target: Int): Boolean {
-        for (m in matrix) {
-            if (m.isEmpty()) continue
-            if (target in m[0]..m[m.lastIndex]) {
-                if (binarySearch(m, 0, m.lastIndex, target) != -1) return true
-            }
-        }
-        return false
-    }
+        val m = matrix.size
+        val n = matrix[0].size
 
-    private fun binarySearch(nums: IntArray, s: Int, e: Int, target: Int): Int {
-        if (s <= e) {
-            val m = (s + e) / 2
-            return when {
-                target < nums[m] -> binarySearch(nums, s, e - 1, target)
-                target > nums[m] -> binarySearch(nums, s + 1, e, target)
-                else -> return m
+        var l = 0
+        var r = (m * n) - 1
+        while (l <= r) {
+            val mid = (l + r) / 2
+            val y = mid / n
+            val x = mid % n
+
+            when {
+                matrix[y][x] == target -> return true
+                matrix[y][x] < target -> l = mid + 1
+                else -> r = mid - 1
             }
         }
-        return -1
+
+        return false
     }
 }
