@@ -2,41 +2,47 @@ package kr.co.programmers
 
 // https://github.com/antop-dev/algorithm/issues/240
 class P68936 {
-    val answer: IntArray = intArrayOf(0, 0)
 
     fun solution(arr: Array<IntArray>): IntArray {
-        recursive(arr, 0, 0, arr.size)
-        return answer
+        return recursive(arr, 0, 0, arr.size)
     }
 
-    private fun recursive(arr: Array<IntArray>, y: Int, x: Int, size: Int) {
-        val count = intArrayOf(0, 0)
-        for (i in y until y + size) {
-            for (j in x until x + size) {
-                if (arr[i][j] == 0) count[0]++ else count[1]++
+    private fun recursive(arr: Array<IntArray>, y: Int, x: Int, size: Int): IntArray {
+        val count = intArrayOf(0, 0);
+        val n = y + size
+        val m = x + size
+        // 시작위치 ~ 크기만큼 0과 1의 개수를 카운트
+        var zero = 0
+        var one = 0
+        for (i in y until n) {
+            for (j in x until m) {
+                if (arr[i][j] == 0) zero++ else one++
             }
         }
         when {
-            count[0] == size * size -> answer[0]++
-            count[1] == size * size -> answer[1]++
+            // 모두 0인 경우
+            zero == size * size -> count[0]++
+            // 모두 1인 경우
+            one == size * size -> count[1]++
+            // 최소 크기인 경우
             size == 2 -> {
-                answer[0] += count[0]
-                answer[1] += count[1]
+                count[0] += zero
+                count[1] += one
             }
+            // 범위를 반으로 줄여서 다시 카운팅
             else -> {
                 val half = size / 2
-                var i = y
-                while (i < y + size) {
-                    var j = x
-                    while (j < x + size) {
-                        recursive(arr, i, j, half)
-                        j += half
+                for (i in y until n step half) {
+                    for (j in x until m step half) {
+                        val (z, o) = recursive(arr, i, j, half)
+                        count[0] += z
+                        count[1] += o
                     }
-                    i += half
                 }
             }
         }
-
+        // 카운팅을 위로 올린다.
+        return count
     }
 
 }
