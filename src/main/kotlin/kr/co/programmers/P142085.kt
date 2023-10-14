@@ -8,8 +8,7 @@ class P142085 {
         var soldier = n // 남은 병사 수
         var used = k // 남은 무적권 수
         // 이전에 병사를 사용 했던 적의 수 기록하며 큰 수가 앞에 온다.
-        // 처음부터 무적권을 사용해야 할 경우에도 일관성있는 코드를 위해서 0을 넣어둔다.
-        val pq = PriorityQueue<Int>().apply { this += 0 }
+        val pq = PriorityQueue<Int>()
         // 라운드
         var round = 0
         for (i in enemy.indices) {
