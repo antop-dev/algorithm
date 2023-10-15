@@ -51,5 +51,25 @@ class P103Test {
         )
     }
 
+    @Test
+    fun `example 4`() {
+        val head = TreeNode(1).apply {
+            left = TreeNode(2)
+            right = TreeNode(3).apply {
+                left = TreeNode(4)
+                right = TreeNode(5)
+            }
+        }
+        assertThat(
+            sut.zigzagLevelOrder(head),
+            `is`(
+                listOf(
+                    listOf(1),
+                    listOf(3, 2),
+                    listOf(4, 5)
+                )
+            )
+        )
+    }
 
 }
