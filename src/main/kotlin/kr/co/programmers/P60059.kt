@@ -17,7 +17,7 @@ class P60059 {
     private fun check(key: Array<IntArray>, lock: Array<IntArray>): Boolean {
         val n = lock.size
         val m = key.size
-        val len = (n + n - 1)
+        val len = (n + m - 1)
         val loop = len * len
         var i = 0
         while (i < loop) {
