@@ -172,4 +172,63 @@ class P241Test {
         )
     }
 
+    @Test
+    fun `example 5`() {
+        assertThat(
+            sut.diffWaysToCompute("1+2-3*4"),
+            containsInAnyOrder(-9, -3, -9, 0, 0)
+        )
+    }
+
+    @Test
+    fun `example 6`() {
+        assertThat(
+            sut.diffWaysToCompute("1+2-3*1+2-3"),
+            containsInAnyOrder(
+                3,
+                3,
+                1,
+                -3,
+                1,
+                1,
+                1,
+                -1,
+                -1,
+                -9,
+                -5,
+                -5,
+                -1,
+                -1,
+                3,
+                3,
+                1,
+                -3,
+                1,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                -1,
+                -1,
+                -1,
+                -1,
+                -9,
+                -5,
+                -5,
+                -1,
+                -1,
+                -9,
+                -5,
+                -3,
+                -3,
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+            )
+        )
+    }
+
 }
