@@ -47,4 +47,13 @@ class P494Test {
         )
     }
 
+    @Test
+    fun `example 4`() {
+        assertThat(sut.findTargetSumWays(intArrayOf(1), 2), `is`(0))
+    }
+
+    @Test
+    fun `example 5`() {
+        assertThat(sut.findTargetSumWays(intArrayOf(1), 1), `is`(1))
+    }
 }

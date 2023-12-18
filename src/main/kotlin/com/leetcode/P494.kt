@@ -3,15 +3,21 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/528
 class P494 {
     fun findTargetSumWays(nums: IntArray, target: Int): Int {
-        return dfs(nums, 0, target)
-    }
+        val sum = nums.sum()
+        if (target < -sum || target > sum) return 0
 
-    private fun dfs(nums: IntArray, i: Int, target: Int): Int {
-        if (i >= nums.size) {
-            return if (target == 0) 1 else 0
+        var dp = IntArray(2 * sum + 1)
+        dp[0 + sum] = 1
+
+        for (i in nums.indices) {
+            val next = IntArray(2 * sum + 1)
+            for (k in 0 until 2 * sum + 1) {
+                if (dp[k] == 0) continue
+                next[k + nums[i]] += dp[k]
+                next[k - nums[i]] += dp[k]
+            }
+            dp = next
         }
-        val pos = dfs(nums, i + 1, target + nums[i])
-        val neg = dfs(nums, i + 1, target - nums[i])
-        return pos + neg
+        return dp[sum + target]
     }
 }
