@@ -1,47 +1,56 @@
 package kr.co.programmers
 
-// https://github.com/antop-dev/algorithm/issuefs/529
+import java.util.*
+
 class P72413 {
     companion object {
-        // INF = (최대택시요금 * 최대지점수) + 1
         const val INF = (100_000 * 200) + 1
     }
 
     fun solution(n: Int, s: Int, a: Int, b: Int, fares: Array<IntArray>): Int {
-        val graph = floydWarshall(n, fares)
-        // S : 합승 시작
-        // C : 합승 도착
-        // A : A 도착
-        // B : B 도착
+        // 지점 → (지점들,택시요금)
+        val paths = paths(n, fares)
+        // 다익스트라
+        val office = dijkstra(paths, s) // S → Other
+        val muzi = dijkstra(paths, a) // A → Other
+        val apeach = dijkstra(paths, b) // B → Other
+        // 합승 도착 지점 C를 기준으로 최소 비용 계산
         var ans = INF
         for (c in 1..n) {
-            // (S → C) + (C → A)
-            //         + (C → B)
-            // 택시요금이 가장 작은 택시요금을 찾는다.
-            ans = minOf(ans, graph[s][c] + graph[c][a] + graph[c][b])
+            val cost = office[c] + muzi[c] + apeach[c]
+            ans = minOf(ans, cost)
         }
         return ans
     }
 
-    private fun floydWarshall(n: Int, fares: Array<IntArray>): Array<IntArray> {
-        // 배열 초기화
-        val graph = Array(n + 1) {
-            IntArray(n + 1) { INF }
+    private fun paths(n: Int, fares: Array<IntArray>): Array<MutableList<Point>> {
+        val paths = Array(n + 1) { mutableListOf<Point>() }
+        for ((s, e, cost) in fares) {
+            paths[s] += Point(e, cost)
+            paths[e] += Point(s, cost)
         }
-        // 지점 → 지점 초기화
-        for ((c, d, f) in fares) {
-            graph[c][d] = f
-            graph[d][c] = f
-        }
-        // 계산
-        for (k in 1..n) {
-            graph[k][k] = 0
-            for (i in 1..n) {
-                for (j in 1..n) {
-                    graph[i][j] = minOf(graph[i][j], graph[i][k] + graph[k][j])
+        return paths
+    }
+
+    private fun dijkstra(paths: Array<MutableList<Point>>, s: Int): IntArray {
+        val costs = IntArray(paths.size) { INF }
+        costs[s] = 0
+
+        val pq = LinkedList<Point>()
+        pq += Point(s, 0)
+
+        while (pq.isNotEmpty()) {
+            val curr = pq.poll()
+            for (next in paths[curr.n]) {
+                val nextCost = curr.cost + next.cost
+                if (nextCost < costs[next.n]) {
+                    costs[next.n] = nextCost
+                    pq += Point(next.n, nextCost)
                 }
             }
         }
-        return graph
+        return costs
     }
+
+    data class Point(val n: Int, val cost: Int)
 }
