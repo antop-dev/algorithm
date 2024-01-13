@@ -6,26 +6,27 @@ import java.util.*
 class P76502 {
     fun solution(s: String): Int {
         var answer = 0
-        val chars = s.toCharArray().toMutableList()
-        for (i in 0 until s.lastIndex) {
-            // 검사
-            if (validate(chars)) answer++
-            // 회전
-            chars += chars.removeAt(0)
+        for (i in s.indices) {
+            if (validate(s, i)) {
+                answer++
+            }
         }
-
         return answer
     }
 
-    private fun validate(chars: List<Char>): Boolean {
+    // 괄호 검사
+    private fun validate(s: String, i: Int): Boolean {
+        val n = s.length
         val stack = Stack<Char>()
-        for (c in chars) {
+        for (k in i until i + n) {
+            val ch = s[k % n]
             when {
-                c in arrayOf('[', '{', '(') -> stack.push(c)
+                ch in arrayOf('[', '{', '(') -> stack.push(ch)
+                // 이후부터는 닫는 괄호
                 stack.isEmpty() -> return false
-                c == ']' && stack.pop() != '[' -> return false
-                c == '}' && stack.pop() != '{' -> return false
-                c == ')' && stack.pop() != '(' -> return false
+                ch == ']' && stack.pop() != '[' -> return false
+                ch == '}' && stack.pop() != '{' -> return false
+                ch == ')' && stack.pop() != '(' -> return false
             }
         }
         return stack.isEmpty()
