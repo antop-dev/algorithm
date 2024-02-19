@@ -10,6 +10,9 @@ class P42584Test {
 
     @Test
     void example01() {
-        assertThat(p.solution(new int[]{1, 2, 3, 2, 3}), is(new int[]{4, 3, 1, 1, 0}));
+        assertThat(
+                p.solution(new int[]{1, 2, 3, 2, 3}),
+                is(new int[]{4, 3, 1, 1, 0})
+        );
     }
 }
