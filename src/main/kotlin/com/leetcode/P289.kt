@@ -25,9 +25,7 @@ class P289 {
 
         for (i in board.indices) {
             for (j in board[i].indices) {
-                if (board[i][j] == DEAD_TO_LIVE || board[i][j] == LIVE_TO_DEAD) {
-                    board[i][j] -= 2
-                }
+                board[i][j] %= 2
             }
         }
     }
