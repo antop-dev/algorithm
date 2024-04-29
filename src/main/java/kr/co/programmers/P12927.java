@@ -13,7 +13,7 @@ public class P12927 {
             sum += works[i];
         }
 
-        if (n > sum) {
+        if (n >= sum) {
             return 0;
         }
 
