@@ -1,33 +1,39 @@
 package kr.co.programmers;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 // https://github.com/antop-dev/algorithm/issues/553
 public class P12927 {
     public long solution(int n, int[] works) {
-        long sum = 0L;
-        Queue<Integer> pq = new PriorityQueue<>((o1, o2) -> works[o2] - works[o1]);
-        for (int i = 0; i < works.length; i++) {
-            pq.offer(i);
-            sum += works[i];
-        }
+        Queue<Integer> pq = priorityQueue(works);
+        work(pq, n);
+        return fatigue(pq);
+    }
 
-        if (n >= sum) {
-            return 0;
-        }
-
-        while (n-- > 0 && !pq.isEmpty()) {
-            int poll = pq.poll();
-            works[poll]--;
-            pq.offer(poll);
-        }
-
-        long ans = 0L;
+    private Queue<Integer> priorityQueue(int[] works) {
+        Queue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
         for (int v : works) {
-            sum += v;
-            ans += (long) v * v;
+            pq.offer(v);
         }
-        return ans;
+        return pq;
+    }
+
+    private void work(Queue<Integer> queue, int n) {
+        while (n-- > 0 && !queue.isEmpty()) {
+            int v = queue.poll();
+            if (v > 0) v--;
+            queue.offer(v);
+        }
+    }
+
+    private long fatigue(Queue<Integer> queue) {
+        long fatigue = 0L;
+        while (!queue.isEmpty()) {
+            int v = queue.poll();
+            fatigue += (long) v * v;
+        }
+        return fatigue;
     }
 }
