@@ -4,13 +4,20 @@ package com.leetcode
 class P189 {
     fun rotate(nums: IntArray, k: Int) {
         val m = k % nums.size
-        if (m == 0) return
+        reverse(nums, 0, nums.lastIndex)
+        reverse(nums, 0, m - 1)
+        reverse(nums, m, nums.lastIndex)
+    }
 
-        val copy = nums.copyOf()
-        var i = m
-        repeat(nums.size) {
-            nums[i] = copy[it]
-            i = (i + 1) % nums.size
+    private fun reverse(nums: IntArray, s: Int, e: Int) {
+        var start = s
+        var end = e
+        while (start < end) {
+            val tmp = nums[start]
+            nums[start] = nums[end]
+            nums[end] = tmp
+            start++
+            end--
         }
     }
 }
