@@ -4,35 +4,32 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-internal class P3Test {
-    val p = P3()
+class P3Test {
+    val sut = P3()
 
     @Test
-    fun `example 01`() {
-        val s = "abcabcbb"
-        val length = p.lengthOfLongestSubstring(s)
-        assertThat(length, `is`(3))
+    fun `example 1`() {
+        assertThat(sut.lengthOfLongestSubstring("abcabcbb"), `is`(3))
     }
 
     @Test
-    fun `example 02`() {
-        val s = "bbbbb"
-        val length = p.lengthOfLongestSubstring(s)
-        assertThat(length, `is`(1))
+    fun `example 2`() {
+        assertThat(sut.lengthOfLongestSubstring("bbbbb"), `is`(1))
     }
 
     @Test
-    fun `example 03`() {
-        val s = "pwwkew"
-        val length = p.lengthOfLongestSubstring(s)
-        assertThat(length, `is`(3))
+    fun `example 3`() {
+        assertThat(sut.lengthOfLongestSubstring("pwwkew"), `is`(3))
     }
 
     @Test
-    fun `example 04`() {
-        val s = "aaaaazxc"
-        val length = p.lengthOfLongestSubstring(s)
-        assertThat(length, `is`(4))
+    fun `example 4`() {
+        assertThat(sut.lengthOfLongestSubstring("aaaaazxc"), `is`(4))
+    }
+
+    @Test
+    fun `example 5`() {
+        assertThat(sut.lengthOfLongestSubstring("abba"), `is`(2))
     }
 
 }

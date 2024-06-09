@@ -1,20 +1,15 @@
 package com.leetcode
 
-
-// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// https://github.com/antop-dev/algorithm/issues/110
 class P3 {
     fun lengthOfLongestSubstring(s: String): Int {
         var ans = 0
         val map = mutableMapOf<Char, Int>()
-
-        var i = 0
-        for (j in s.indices) {
-            println("i = $i, j = $j, c = ${s[j]},  map = $map")
-            if (map.contains(s[j])) {
-                i = maxOf(map[s[j]]!!, i)
-            }
-            ans = maxOf(ans, j - i + 1)
-            map[s[j]] = j + 1
+        var anchor = 0
+        s.forEachIndexed { i, ch ->
+            map[ch]?.let { anchor = maxOf(anchor, it + 1) }
+            ans = maxOf(ans, i - anchor + 1)
+            map[ch] = i
         }
         return ans
     }
