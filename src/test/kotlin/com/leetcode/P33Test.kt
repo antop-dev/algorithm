@@ -4,7 +4,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-internal class P33Test {
+class P33Test {
     val p = P33()
 
     @Test
@@ -40,5 +40,15 @@ internal class P33Test {
     @Test
     fun `example 07`() {
         assertThat(p.search(intArrayOf(4, 5, 6, 7, 8, 1, 2, 3), 8), `is`(4))
+    }
+
+    @Test
+    fun `example 08`() {
+        assertThat(p.search(intArrayOf(3, 1), 1), `is`(1))
+    }
+
+    @Test
+    fun `example 09`() {
+        assertThat(p.search(intArrayOf(1, 3), 1), `is`(0))
     }
 }

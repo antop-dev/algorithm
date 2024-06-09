@@ -1,18 +1,27 @@
 package com.leetcode
 
-// https://leetcode.com/problems/search-in-rotated-sorted-array/
+// https://github.com/antop-dev/algorithm/issues/122
 class P33 {
     fun search(nums: IntArray, target: Int): Int {
-        return search(nums, target, 0, nums.lastIndex)
-    }
-
-    fun search(nums: IntArray, target: Int, l: Int, r: Int): Int {
-        if (l > r) return -1
-        val mid = (l + r) / 2
-
-        return when (target) {
-            nums[mid] -> mid
-            else -> maxOf(search(nums, target, l, mid - 1), search(nums, target, mid + 1, r))
+        var l = 0
+        var r = nums.lastIndex
+        while (l <= r) {
+            val m = (l + r) / 2
+            if (nums[m] == target) return m
+            if (nums[l] <= nums[m]) { // 왼쪽이 정렬되어 있음
+                if (target in nums[l]..nums[m]) {
+                    r = m - 1
+                } else {
+                    l = m + 1
+                }
+            } else { // 오른쪽이 정렬되어 있음
+                if (target in nums[m]..nums[r]) {
+                    l = m + 1
+                } else {
+                    r = m - 1
+                }
+            }
         }
+        return -1
     }
 }
