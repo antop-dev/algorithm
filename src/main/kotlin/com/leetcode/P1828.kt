@@ -21,8 +21,8 @@ class P1828 {
 
     // 두 점의 거리 구하기
     private fun distance(qx: Int, qy: Int, px: Int, py: Int): Double {
-        val xDist = qx.toDouble() - px
-        val yDist = qy.toDouble() - py
+        val xDist = px.toDouble() - qx
+        val yDist = py.toDouble() - qy
         return sqrt(xDist * xDist + yDist * yDist)
     }
 
