@@ -4,12 +4,13 @@ package com.leetcode
 class P3 {
     fun lengthOfLongestSubstring(s: String): Int {
         var ans = 0
-        val map = mutableMapOf<Char, Int>()
-        var anchor = 0
-        s.forEachIndexed { i, ch ->
-            map[ch]?.let { anchor = maxOf(anchor, it + 1) }
-            ans = maxOf(ans, i - anchor + 1)
-            map[ch] = i
+        val sb = StringBuilder()
+        for (ch in s) {
+            if (ch in sb) {
+                sb.delete(0, sb.indexOf(ch) + 1)
+            }
+            sb.append(ch)
+            ans = maxOf(ans, sb.length)
         }
         return ans
     }
