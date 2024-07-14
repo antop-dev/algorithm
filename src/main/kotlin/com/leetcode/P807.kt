@@ -4,10 +4,9 @@ package com.leetcode
 class P807 {
 
     fun maxIncreaseKeepingSkyline(grid: Array<IntArray>): Int {
-        var total = 0
         val size = grid.size
-        val left = Array(size) { 0 }
-        val top = Array(size) { 0 }
+        val left = IntArray(size)
+        val top = IntArray(size)
 
         for (y in 0 until size) {
             for (x in 0 until size) {
@@ -16,12 +15,12 @@ class P807 {
             }
         }
 
+        var total = 0
         for (y in 0 until size) {
             for (x in 0 until size) {
                 total += minOf(left[y], top[x]) - grid[y][x]
             }
         }
-
         return total
     }
 
