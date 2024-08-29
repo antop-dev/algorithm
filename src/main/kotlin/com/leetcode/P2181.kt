@@ -8,15 +8,15 @@ class P2181 {
         var anchor = head
         var node = head.next // 두번째 노드부터 시작
 
-        while (node != null) {
+        while (anchor != null && node != null) {
             if (node.`val` > 0) {
-                anchor!!.`val` += node.`val`
-            } else {
-                if (node.next != null) { // 뒤에 더 있음
-                    anchor!!.next = node
+                anchor.`val` += node.`val`
+            } else { // 0 노드
+                if (node.next != null) { // 뒤에 노드가 더 있으면
+                    anchor.next = node
                     anchor = node
-                } else { // 마지막 노드
-                    anchor!!.next = null
+                } else { // 마지막 노드면
+                    anchor.next = null
                 }
             }
             node = node.next
