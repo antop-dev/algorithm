@@ -1,5 +1,7 @@
 package kr.co.programmers
 
+import java.util.*
+
 // https://github.com/antop-dev/algorithm/issues/411
 class P12978 {
     companion object {
@@ -9,65 +11,42 @@ class P12978 {
     fun solution(N: Int, road: Array<IntArray>, k: Int): Int {
         if (N == 1) return 1
         // 행노드 -> 열노드간의 거리를 2차원 배열에 담는다.
-        val graph = makeGraph(N, road)
+        val graph = graph(N, road)
         // 노드 방문 여부
         val visited = BooleanArray(N + 1)
         // 이동 시간
-        val times = IntArray(N + 1) {
-            if (it >= 2) INF else 0
-        }
-        var node = 1 // 1번 마을에서 시작
-        while (node != INF) {
+        val times = IntArray(N + 1) { i -> if (i != 1) INF else 0 }
+        // 우선순위 큐
+        val pq = PriorityQueue<Int>() { o1, o2 -> times[o1] - times[o2] }
+        pq += 1
+
+        while (pq.isNotEmpty()) {
+            val node = pq.poll()
+            if (visited[node]) continue
             visited[node] = true
-            // 갈 수 있는 노드 계산
-            for (i in 1..N) {
-                if (visited[i]) continue
-                if (graph[node][i] == INF) continue
-                // 시간 갱신
-                if (times[node] + graph[node][i] < times[i]) {
-                    times[i] = times[node] + graph[node][i]
+
+            for (nextNode in 1..N) {
+                val nextTime = graph[node][nextNode]
+                if (times[node] + nextTime < times[nextNode]) {
+                    times[nextNode] = times[node] + nextTime // 시간 갱신
+                    pq += nextNode
                 }
-            }
-            // 가장 최소 시간를 가지는 노드를 구한다.
-            node = run {
-                var min = INF
-                var idx = INF
-                for (i in 1 .. N) {
-                    if (!visited[i] && times[i] < min) {
-                        min = times[i]
-                        idx = i
-                    }
-                }
-                idx
             }
         }
         // K 시간 이하로 배달이 가능한 노드 개수 세기
-        var answer = 0
-        for (i in 1 until times.size) {
-            if (times[i] <= k) answer++
-        }
-        return answer
+        return times.count { it <= k }
     }
 
-    private fun makeGraph(N: Int, road: Array<IntArray>): Array<IntArray> {
-        val graph = Array(N + 1) {
-            IntArray(N + 1)
-        }
-        // 디폴트를 0 또는 INF
-        for (i in 1..N) {
-            for (j in 1..N) {
-                if (i == j) continue
-                graph[i][j] = INF
+    private fun graph(N: Int, road: Array<IntArray>): Array<IntArray> {
+        val graph = Array(N + 1) { i ->
+            IntArray(N + 1) { j ->
+                if (i != j) INF else 0
             }
         }
-        // 마을간에 여러개의 길이 있을 수 있으므로 최단 거리만 남긴다.
-        for (r in road) {
-            if (r[2] < graph[r[0]][r[1]]) {
-                graph[r[0]][r[1]] = r[2]
-            }
-            if (r[2] < graph[r[1]][r[0]]) {
-                graph[r[1]][r[0]] = r[2]
-            }
+        // 두 마을 a, b를 연결하는 도로는 여러 개가 있을 수 있습니다.
+        for ((a, b, c) in road) {
+            graph[a][b] = minOf(graph[a][b], c)
+            graph[b][a] = minOf(graph[b][a], c)
         }
         return graph
     }
