@@ -14,6 +14,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <!-- https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages- -->
         <kotlin.version>1.9.0</kotlin.version>
+        <kotest.version>5.9.1</kotest.version>
     </properties>
 
     <dependencies>
@@ -51,6 +52,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.9</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-runner-junit5</artifactId>
+            <version>${kotest.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- kotlin -->
@@ -138,6 +145,11 @@
                     <source>14</source>
                     <target>14</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
