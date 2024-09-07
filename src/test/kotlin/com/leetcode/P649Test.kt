@@ -1,53 +1,54 @@
 package com.leetcode
 
-import io.kotest.core.spec.style.AnnotationSpec
-import io.kotest.matchers.shouldBe
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.`is`
+import org.junit.jupiter.api.Test
 
-class P649Test : AnnotationSpec() {
+class P649Test {
     val sut = P649()
 
     @Test
     fun `example 1`() {
-        sut.predictPartyVictory("RD") shouldBe "Radiant"
+        assertThat(sut.predictPartyVictory("RD"), `is`("Radiant"))
     }
 
     @Test
     fun `example 2`() {
-        sut.predictPartyVictory("RDD") shouldBe "Dire"
+        assertThat(sut.predictPartyVictory("RDD"), `is`("Dire"))
     }
 
     @Test
     fun `example 3`() {
-        sut.predictPartyVictory("RRRDDD") shouldBe "Radiant"
+        assertThat(sut.predictPartyVictory("RRRDDD"), `is`("Radiant"))
     }
 
     @Test
     fun `example 4`() {
-        sut.predictPartyVictory("DDDRRR") shouldBe "Dire"
+        assertThat(sut.predictPartyVictory("DDDRRR"), `is`("Dire"))
     }
 
     @Test
     fun `example 5`() {
-        sut.predictPartyVictory("RDRDRD") shouldBe "Radiant"
+        assertThat(sut.predictPartyVictory("RDRDRD"), `is`("Radiant"))
     }
 
     @Test
     fun `example 6`() {
-        sut.predictPartyVictory("DRDRDR") shouldBe "Dire"
+        assertThat(sut.predictPartyVictory("DRDRDR"), `is`("Dire"))
     }
 
     @Test
     fun `example 7`() {
-        sut.predictPartyVictory("DDDRRRR") shouldBe "Dire"
+        assertThat(sut.predictPartyVictory("DDDRRRR"), `is`("Dire"))
     }
 
     @Test
     fun `example 8`() {
-        sut.predictPartyVictory("DDDRRRRR") shouldBe "Radiant"
+        assertThat(sut.predictPartyVictory("DDDRRRRR"), `is`("Radiant"))
     }
 
     @Test
     fun `example 9`() {
-        sut.predictPartyVictory("RRDDD") shouldBe "Radiant"
+        assertThat(sut.predictPartyVictory("RRDDD"), `is`("Radiant"))
     }
 }
