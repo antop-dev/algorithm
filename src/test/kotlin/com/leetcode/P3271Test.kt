@@ -2,7 +2,6 @@ package com.leetcode
 
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Test
 
 class P3271Test : AnnotationSpec() {
     val sut = P3271()
