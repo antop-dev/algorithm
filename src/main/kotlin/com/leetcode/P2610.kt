@@ -3,20 +3,19 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/584
 class P2610 {
     fun findMatrix(nums: IntArray): List<List<Int>> {
-        val ans = mutableListOf<MutableSet<Int>>()
+        val ans = mutableListOf<MutableList<Int>>()
+        // n이 몇번째 배열 위치까지 들어가 있는지 기록
+        val memo = mutableMapOf<Int, Int>()
 
-        loop@ for (n in nums) {
-            var i = 0
-            while (i < ans.size) {
-                if (n !in ans[i]) {
-                    ans[i] += n
-                    continue@loop
-                }
-                i++
+        for (n in nums) {
+            val pos = (memo[n] ?: -1) + 1
+            if (pos == ans.size) {
+                ans += mutableListOf<Int>()
             }
-            ans += mutableSetOf(n)
+            ans[pos] += n
+            memo[n] = pos
         }
 
-        return ans.map { it.toList() }
+        return ans
     }
 }
