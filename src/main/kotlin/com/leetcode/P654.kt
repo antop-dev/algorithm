@@ -7,12 +7,15 @@ class P654 {
     }
 
     private fun constructMaximumBinaryTree(nums: IntArray, l: Int, r: Int): TreeNode? {
-        if (l > r) return null
-        if (l == r) return TreeNode(nums[l])
+        if (l > r) {
+            return null
+        }
 
         var maxIndex = r
         for (i in l until r) {
-            if (nums[i] > nums[maxIndex]) maxIndex = i
+            if (nums[i] > nums[maxIndex]) {
+                maxIndex = i
+            }
         }
         return TreeNode(nums[maxIndex]).apply {
             left = constructMaximumBinaryTree(nums, l, maxIndex - 1)
