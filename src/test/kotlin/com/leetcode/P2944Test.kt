@@ -51,4 +51,9 @@ class P2944Test {
             //                          ↑       ↑       ↑              ↑
         )
     }
+    
+    @Test
+    fun `example 9`() {
+        assertThat(sut.minimumCoins(intArrayOf(10)), `is`(10))
+    }
 }
