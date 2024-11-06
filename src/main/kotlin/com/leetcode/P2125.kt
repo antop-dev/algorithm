@@ -8,9 +8,7 @@ class P2125 {
         for (floor in bank) {
             val count = floor.count { it == '1' }
             if (count > 0) {
-                if (before > 0) {
-                    ans += before * count
-                }
+                ans += before * count
                 before = count
             }
         }
