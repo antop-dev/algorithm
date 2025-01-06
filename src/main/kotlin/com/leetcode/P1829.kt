@@ -1,17 +1,16 @@
 package com.leetcode
 
-import kotlin.math.pow
-
 // https://github.com/antop-dev/algorithm/issues/615
 class P1829 {
     fun getMaximumXor(nums: IntArray, maximumBit: Int): IntArray {
-        var cumulative = nums.fold(0) { acc, n -> acc xor n }
-        val k = 2.0.pow(maximumBit).toInt() - 1
+        val n = nums.size
+        var acc = 0
+        val k = (1 shl maximumBit) - 1
 
-        val ans = IntArray(nums.size)
+        val ans = IntArray(n)
         for (i in nums.indices) {
-            ans[i] = k xor cumulative
-            cumulative = cumulative xor nums[nums.lastIndex - i]
+            acc = acc xor nums[i]
+            ans[n - i - 1] = k xor acc
         }
         return ans
     }
