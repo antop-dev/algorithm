@@ -3,24 +3,29 @@ package com.leetcode
 // https://github.com/antop-dev/algorithm/issues/342
 class P43162 {
     fun solution(n: Int, computers: Array<IntArray>): Int {
-        var answer = 0
-        for (i in 0 until n) {
-            if (computers[i][i] == 1) {
-                // 갈수 있는 모든 노드를 탐색하면서 방문 체크
-                dfs(computers, i)
-                answer++
+        var ans = 0
+        for (c in 0 until n) {
+            if (computers[c][c] == 1) {
+                // DFS로 탐색하고 카운팅
+                dfs(computers, c)
+                ans++
             }
         }
-        return answer
+        return ans
     }
 
-    private fun dfs(computers: Array<IntArray>, i: Int) {
-        // 이미 탐색된 네트워크
-        if (computers[i][i] == 0) return
+    private fun dfs(computers: Array<IntArray>, c: Int) {
+        // 이미 탐색된 컴퓨터
+        if (computers[c][c] == 0) {
+            return
+        }
         // 방문 체크
-        computers[i][i] = 0
-        for (j in computers.indices) {
-            if (computers[i][j] == 1) dfs(computers, j)
+        computers[c][c] = 0
+        // 다른 컴퓨터로 탐색
+        for (to in computers.indices) {
+            if (computers[c][to] == 1) {
+                dfs(computers, to)
+            }
         }
     }
 }
