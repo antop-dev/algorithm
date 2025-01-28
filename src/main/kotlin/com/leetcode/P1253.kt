@@ -39,11 +39,6 @@ class P1253 {
         if (upperSum != upper || lowerSum != lower) {
             return listOf()
         }
-
-        println("colsum = ${colsum.contentToString()}")
-        println("upper  = ${matrix[0]} → upperSum = $upperSum")
-        println("lower  = ${matrix[1]} → lowerSum = $lowerSum")
-
         return matrix
     }
 }
