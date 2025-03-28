@@ -3,48 +3,33 @@ package kr.co.programmers
 // https://github.com/antop-dev/algorithm/issues/635
 class P388352 {
     fun solution(n: Int, q: Array<IntArray>, ans: IntArray): Int {
-        val arr = IntArray(5)
-        return helper(n, q, ans, arr, 0, 0)
+        val qBit = q.map { convertBit(it) }
+        return helper(n, qBit, ans, 0, 0)
     }
 
-    private fun helper(n: Int, q: Array<IntArray>, ans: IntArray, arr: IntArray, pos: Int, v: Int): Int {
-        if (pos == 5) {
-            return if (check(q, ans, arr)) 1 else 0
+    /**
+     * @param make 만들어지고 있는 비트
+     * @param v 지금까지 쓰인 수
+     */
+    private fun helper(n: Int, q: List<Int>, ans: IntArray, make: Int, v: Int): Int {
+        if (make.countOneBits() == 5) {
+            for (i in q.indices) {
+                val match = (q[i] and make).countOneBits()
+                if (match != ans[i]) {
+                    return 0
+                }
+            }
+            return 1
         }
         var count = 0
         for (x in (v + 1)..n) {
-            arr[pos] = x
-            count += helper(n, q, ans, arr, pos + 1, x)
+            val newMake = make or (1 shl x)
+            count += helper(n, q, ans, newMake, x)
         }
         return count
     }
 
-    // q[i]와 arr의 일치하는 값 개수가 ans[i]와 모두 일치하는지 체크
-    private fun check(q: Array<IntArray>, ans: IntArray, arr: IntArray): Boolean {
-        for (i in q.indices) {
-            if (countSame(q[i], arr) != ans[i]) {
-                return false
-            }
-        }
-        return true
-    }
+    // 배열을 비트로 변경
+    private fun convertBit(arr: IntArray) = arr.fold(0) { acc, v -> acc or (1 shl v) }
 
-    // 오름차순으로 정렬된 두 배열에서 같은 값의 개수를 구한다.
-    private fun countSame(x: IntArray, y: IntArray): Int {
-        var count = 0
-        var i = 0
-        var j = 0
-        while (i < x.size && j < y.size) {
-            when {
-                x[i] < y[j] -> i++
-                x[i] > y[j] -> j++
-                else -> { // x[i] == y[j]
-                    count++
-                    i++
-                    j++
-                }
-            }
-        }
-        return count
-    }
 }
