@@ -1,32 +1,36 @@
 package kr.co.programmers;
 
-import java.util.Arrays;
-
 // https://github.com/antop-dev/algorithm/issues/644
 public class P340198 {
     public int solution(int[] mats, String[][] park) {
-        Arrays.sort(mats);
-        for (int k = mats.length - 1; k >= 0; k--) {
-            int mat = mats[k];
-            for (int i = 0; i <= park.length - mat; i++) {
-                for (int j = 0; j <= park[i].length - mat; j++) {
-                    if (park[i][j].equals("-1") && calc(park, i, j, mat)) {
-                        return mat;
-                    }
+        int n = park.length;
+        int m = park[0].length;
+        int[][] dp = new int[n + 1][m + 1];
+
+        int possible = 0; // 가능한 최대 타일 크기
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                if (park[i][j].equals("-1")) {
+                    dp[i][j] = 1 + minOf(dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]);
+                    possible = Math.max(possible, dp[i][j]);
                 }
             }
         }
-        return -1;
+        // 가지고 있는 돗자리 중 가능한 가장 큰 돗자리 찾기
+        int ans = -1;
+        for (int mat : mats) {
+            if (mat <= possible) {
+                ans = Math.max(mat, ans);
+            }
+        }
+        return ans;
     }
 
-    private boolean calc(String[][] park, int i, int j, int mat) {
-        for (int y = i; y < i + mat; y++) {
-            for (int x = j; x < j + mat; x++) {
-                if (!park[y][x].equals("-1")) {
-                    return false;
-                }
-            }
+    private int minOf(int... ints) {
+        int min = ints[0];
+        for (int v : ints) {
+            min = Math.min(min, v);
         }
-        return true;
+        return min;
     }
 }
