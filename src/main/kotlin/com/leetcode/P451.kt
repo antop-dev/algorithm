@@ -6,21 +6,25 @@ import java.util.*
 class P451 {
 
     fun frequencySort(s: String): String {
-        val counter = IntArray(128) { 0 }
+        // 문자 수 카운팅
+        val counter = IntArray(128)
+        s.forEach { ch -> counter[ch.code]++ }
+        // 우선순위 큐에 카운팅이 있는 문자열의 인덱스만 넣는다.
         val pq = PriorityQueue<Int> { a, b -> counter[b] - counter[a] }
-
-        for (c in s) counter[c.toInt()]++
-
-        for (i in counter.indices) {
-            if (counter[i] > 0) pq.add(i)
+        counter.forEachIndexed { i, v ->
+            if (v > 0) {
+                pq += i
+            }
         }
-
-        val sb = StringBuffer(s.length)
-        while (pq.isNotEmpty()) {
-            val i = pq.poll()
-            while (counter[i]-- > 0) sb.append(i.toChar())
+        // 우선순위큐에서 꺼내면서 문자열 완성
+        return buildString {
+            while (pq.isNotEmpty()) {
+                val i = pq.poll()
+                while (counter[i]-- > 0) {
+                    append(i.toChar())
+                }
+            }
         }
-        return sb.toString()
     }
 
 }
