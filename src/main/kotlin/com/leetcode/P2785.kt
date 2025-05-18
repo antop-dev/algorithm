@@ -1,6 +1,7 @@
-package com.codewars
+package com.leetcode
 
-import java.util.*
+import java.util.PriorityQueue
+import kotlin.text.iterator
 
 // https://github.com/antop-dev/algorithm/issues/533
 class P2785 {
