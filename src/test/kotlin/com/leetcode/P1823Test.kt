@@ -4,8 +4,8 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-class P1254Test {
-    val sut = P1254()
+class P1823Test {
+    val sut = P1823()
 
     @Test
     fun `example 1`() {

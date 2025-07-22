@@ -3,7 +3,7 @@ package com.leetcode
 import java.util.*
 
 // https://github.com/antop-dev/algorithm/issues/669
-class P1254 {
+class P1823 {
     fun findTheWinner(n: Int, k: Int): Int {
         val queue = LinkedList<Int>()
         (1..n).forEach { queue += it }
