@@ -16,17 +16,14 @@ class P388353 {
         return box.sumOf { it.count { ch -> ch != ' ' } }
     }
 
-    private fun crane(box: List<CharArray>, ch: Char): Int {
-        var count = 0
+    private fun crane(box: List<CharArray>, ch: Char) {
         for (i in box.indices) {
             for (j in box[i].indices) {
                 if (box[i][j] == ch) {
                     box[i][j] = ' '
-                    count++
                 }
             }
         }
-        return count
     }
 
     private fun forklift(box: List<CharArray>, ch: Char) {
