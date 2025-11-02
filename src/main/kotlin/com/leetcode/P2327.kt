@@ -4,8 +4,9 @@ package com.leetcode
 class P2327 {
     fun peopleAwareOfSecret(n: Int, delay: Int, forget: Int): Int {
         val modulo = 1_000_000_007
-        var share = 0L // 비밀을 알고 있는 사람의 (누적) 수
-        // dp[day] : 해당 일에 비밀을 알고 있는 사람의 수
+        // 비밀을 알려줄 사람의 수
+        var share = 0L
+        // dp[day] : 해당 일에 비밀을 알게된 사람의 수
         val dp = IntArray(n + 1)
         dp[1] = 1
 
@@ -19,6 +20,7 @@ class P2327 {
             share = (share + modulo) % modulo
             dp[day] = share.toInt()
         }
+
         // 비밀을 잊지 않은 사람들의 범위 합계
         // n = 4, forget = 3 일경우 2,3,4일차에 해당하는 사람들만 기억이 유효하다.
         var ans = 0
