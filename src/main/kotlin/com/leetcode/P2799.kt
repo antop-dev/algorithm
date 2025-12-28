@@ -6,10 +6,10 @@ class P2799 {
         var ans = 0
         val k = nums.toSet().size
         for (i in nums.indices) {
-            val hash = HashMap<Int, Int>()
+            val set = mutableSetOf<Int>()
             for (j in i until nums.size) {
-                hash[nums[j]] = hash[nums[j]]?.let { it + 1 } ?: 1
-                if (hash.size == k) {
+                set += nums[j]
+                if (set.size == k) {
                     ans++
                 }
             }
