@@ -9,3 +9,5 @@
 * [프로그래머스](https://programmers.co.kr)<sup>`programmers`</sup>
 * [백준 온라인 저지](https://www.acmicpc.net)<sup>`Baekjoon Online Judge`</sup>
 * [LeetCode](https://www.leetcode.com)
+
+![LeeCode](https://leetcode-badge-sage.vercel.app/badge/antop-dev?theme=dark&bgColor=282828)
