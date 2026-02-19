@@ -5,36 +5,40 @@ import java.util.*
 // https://github.com/antop-dev/algorithm/issues/722
 class P752 {
     fun openLock(deadends: Array<String>, target: String): Int {
-        var ans = Int.MAX_VALUE
         val goal = target.toInt()
         // 방문 여부
         val visited = BooleanArray(10000).apply {
             // 갈 수 없는 노드 == 방문한 노드
             deadends.forEach { this[it.toInt()] = true }
         }
-        // 이동 횟수가 적은 순
-        val comparator = compareBy<Pair<Int, Int>> { (_, turn) -> turn }
-        val pq = PriorityQueue(comparator)
-        pq += 0 to 0 // "0000": 0 turns
+        // 이동 횟수
+        var turns = 0
 
-        while (pq.isNotEmpty()) {
-            val (lock, turn) = pq.poll()
-            if (visited[lock]) { // 방문한 경우 패스
-                continue
+        val queue = LinkedList<Int>()
+        queue += 0
+
+        while (queue.isNotEmpty()) {
+            var loop = queue.size
+            while (loop-- > 0) {
+                val lock = queue.poll()
+                if (visited[lock]) {
+                    continue
+                }
+                if (lock == goal) {
+                    return turns
+                }
+                visited[lock] = true
+                // 다음으로 움직을 수 있는 번호들 만들기
+                val nextLocks = nextLocks(lock)
+                nextLocks.forEach {
+                    if (!visited[it]) {
+                        queue += it
+                    }
+                }
             }
-            if (turn >= ans) { // 현재 최소 횟수를 넘어가는 경우
-                continue
-            }
-            if (lock == goal) { // 도착하면 끝
-                ans = minOf(ans, turn)
-                break
-            }
-            visited[lock] = true
-            // 다음으로 움직을 수 있는 번호들 만들기
-            val nextLocks = nextLocks(lock)
-            nextLocks.forEach { pq += it to turn + 1 }
+            turns++
         }
-        return if (ans == Int.MAX_VALUE) -1 else ans
+        return -1
     }
 
     // 현재 번호에서 갈 수 있는 번호 목록 만들기
