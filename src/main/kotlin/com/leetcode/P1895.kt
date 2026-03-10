@@ -13,11 +13,8 @@ class P1895 {
         val prefixSum = prefixSum(grid)
         var k = minOf(grid.size, grid[0].size)
         while (k > 1) {
-            for (i in 0 until grid.size) {
-                for (j in 0 until grid[i].size) {
-                    if (i + k > grid.size || j + k > grid[i].size) { // 범위 넘치면 패스
-                        continue
-                    }
+            for (i in 0..grid.size - k) {
+                for (j in 0..grid[i].size - k) {
                     if (check(prefixSum, i, j, k)) {
                         return k
                     }
