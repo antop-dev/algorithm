@@ -17,10 +17,10 @@ class P3868 {
             if (count % 2 != 0) {
                 return -1
             }
-            // nums1 → nums2(or nums2 ← nums1)로 옮기는 회수
+            // nums1 → nums2(or nums2 ← nums1)로 옮기는 횟수
             ans += abs(count) / 2
         }
-        // A와 B가 서로 교환하는 회수
+        // A와 B가 서로 교환하는 횟수
         return ans / 2
     }
 }
