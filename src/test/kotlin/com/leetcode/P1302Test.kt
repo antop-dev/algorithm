@@ -5,11 +5,11 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-internal class P1302Test {
-    val p = P1302()
+class P1302Test {
+    val sut = P1302()
 
     @Test
-    fun `example 01`() {
+    fun `example 1`() {
         val root = TreeNode(1).apply {
             left = TreeNode(2).apply {
                 left = TreeNode(4).apply {
@@ -23,8 +23,28 @@ internal class P1302Test {
                 }
             }
         }
+        assertThat(sut.deepestLeavesSum(root), `is`(15))
+    }
 
-        assertThat(p.deepestLeavesSum(root), `is`(15))
-
+    @Test
+    fun `example 2`() {
+        val root = TreeNode(6).apply {
+            left = TreeNode(7).apply {
+                left = TreeNode(2).apply {
+                    left = TreeNode(9)
+                }
+                right = TreeNode(7).apply {
+                    left = TreeNode(1)
+                    right = TreeNode(4)
+                }
+            }
+            right = TreeNode(8).apply {
+                left = TreeNode(1)
+                right = TreeNode(3).apply {
+                    right = TreeNode(5)
+                }
+            }
+        }
+        assertThat(sut.deepestLeavesSum(root), `is`(19))
     }
 }
