@@ -1,9 +1,11 @@
 package com.leetcode
 
+import java.util.PriorityQueue
+
 // https://github.com/antop-dev/algorithm/issues/754
 class P2583 {
     fun kthLargestLevelSum(root: TreeNode?, k: Int): Long {
-        val sums = mutableListOf<Long>()
+        val pq = PriorityQueue<Long>()
         val queue = ArrayDeque<TreeNode>()
         root?.let { queue += it }
 
@@ -15,11 +17,14 @@ class P2583 {
                 node.left?.let { queue += it }
                 node.right?.let { queue += it }
             }
-            sums += sum
+            pq += sum
+            if (pq.size > k) {
+                pq.poll()
+            }
         }
 
         return when {
-            k <= sums.size -> sums.sortedDescending()[k - 1]
+            k == pq.size -> pq.poll()
             else -> -1
         }
     }
