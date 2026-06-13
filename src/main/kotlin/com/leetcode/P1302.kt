@@ -1,5 +1,7 @@
 package com.leetcode
 
+import java.util.LinkedList
+
 // https://github.com/antop-dev/algorithm/issues/755
 class P1302 {
     fun deepestLeavesSum(root: TreeNode?): Int {
