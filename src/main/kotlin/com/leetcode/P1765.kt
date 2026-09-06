@@ -21,15 +21,13 @@ class P1765 {
         }
         // BFS
         while (queue.isNotEmpty()) {
-            repeat(queue.size) {
-                val (y, x, height) = queue.removeFirst()
-                dy.zip(dx) { ny, nx ->
-                    val nextY = y + ny
-                    val nextX = x + nx
-                    if (nextY in 0 until m && nextX in 0 until n && ans[nextY][nextX] == -1) {
-                        ans[nextY][nextX] = height + 1
-                        queue += intArrayOf(nextY, nextX, height + 1)
-                    }
+            val (y, x, height) = queue.removeFirst()
+            dy.zip(dx) { ny, nx ->
+                val nextY = y + ny
+                val nextX = x + nx
+                if (nextY in 0 until m && nextX in 0 until n && ans[nextY][nextX] == -1) {
+                    ans[nextY][nextX] = height + 1
+                    queue += intArrayOf(nextY, nextX, height + 1)
                 }
             }
         }
