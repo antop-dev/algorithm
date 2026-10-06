@@ -19,3 +19,5 @@ GitHub Issue -> LeetCode(or 프로그래머스) 이동해서 소스코드와 테
     - 제시된 조건중 빈 예제 / 임계치에 가장 적은 예제 가장 많은 예제는 꼭 포함해줘
 - 코드만 작성하고 빌드나 테스트는 할 필요 없어
     - 리턴 타입에 맞는 기본 값을 리턴까지만 해줘 (예: `return 0` / `return null` / `return ""` / return `intArrOf()` / return `arrayOf()`)
+
+※ 한글을 사용해줘
